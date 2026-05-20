@@ -74,15 +74,26 @@ public class Challenge3 {
 
                     optionIndex = userInput.nextInt();
                     userInput.nextLine();
+                    Ninja newNinjaInstance = null;
+                    boolean isValidOption = true;
 
-                    Ninja newNinjaInstance;
-
-                    if (optionIndex == 2) {
-                        newNinjaInstance = new Uchiha();
-                    } else {
-                        newNinjaInstance = new Ninja();
+                    switch (optionIndex){
+                        case 1:
+                            newNinjaInstance = new Ninja();
+                            break;
+                        case 2:
+                            newNinjaInstance = new Uchiha();
+                            break;
+                        default:
+                            System.out.println("Invalid Option, returning to main menu...");
+                            isValidOption = false;
+                            break;
                     }
 
+                    if(!isValidOption){
+                        break;
+                    }
+                    
                     System.out.println("Enter ninja's name:");
                     newNinjaInstance.name = userInput.nextLine();
 
@@ -166,9 +177,12 @@ public class Challenge3 {
                             System.out.println(i + " - " + ninjas.get(i).name);
                         };
                     };
-                    int choice = userInput.nextInt();
-                    Uchiha ninja = new Uchiha() ninjas.get(choice);
-                    System.out.println(ninja.showSpecialSkill();
+                    optionIndex = userInput.nextInt();
+                    userInput.nextLine();
+                    Uchiha selectedUchiha = (Uchiha) ninjas.get(optionIndex);
+                    selectedUchiha.showSpecialSkill();
+                    break;
+
                 case 0:
 
                     keepLoop = false;
